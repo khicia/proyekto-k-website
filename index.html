@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project K | Welcome</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins';
+      background: #f4f8fb;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header.site-header {
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .site-header img.logo { height: 50px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #ffd700; }
+
+    .hero-banner {
+      background: url('images/calambatourist_home.jpg') center/cover no-repeat;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-banner h1 {
+      font-size: 3.5rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #1e3c72;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #1e3c72;
+      margin: 0.5rem auto 1rem;
+      border-radius: 3px;
+    }
+
+    .mission-vision {
+      padding: 3rem 2rem;
+      background-color: #f0f6ff;
+      text-align: center;
+    }
+    .mission-vision p {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 2rem;
+    }
+    .card {
+      background: white;
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .card:hover { transform: translateY(-6px); }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card h2 {
+      margin: 1rem;
+      font-size: 1.2rem;
+      color: #1e3c72;
+    }
+    .card .teaser, .card .hidden-content {
+      margin: 0 1rem 1rem;
+      font-size: 0.95rem;
+    }
+    .card button {
+      margin: 0 1rem 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #1e3c72;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .map-section {
+      padding: 3rem 2rem;
+      background-color: #fff;
+      text-align: center;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    .project-intro {
+      background: #dbe9ff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .project-intro p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+    }
+
+    footer.site-footer {
+      background: #1e3c72;
+      color: white;
+      padding: 2.5rem 2rem;
+    }
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+    }
+    .footer-columns div h4 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-columns div p {
+      margin: 0.4rem 0;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .footer-columns div p:hover { text-decoration: underline; }
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+    .copyright {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-columns { flex-direction: column; align-items: center; }
+    }
+    .card {
+  background: white;
+  width: 300px;
+  min-height: 550px; /* Set a base height to keep all cards aligned */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card.active {
+  background: #fffbe6; /* Yellow tint when expanded */
+}
+
+.card .hidden-content {
+  display: none;
+  padding-bottom: 1rem;
+}
+  @media (max-width: 768px) {
+    .footer-columns {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-columns div {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  }
+  /* Modal Styling */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .modal-content input {
+    width: 90%;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .modal-content button {
+    padding: 0.7rem 1.2rem;
+    background-color: #1e3c72;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .modal-content .close {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  </style>
+  <!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="register.php">SIGNUP</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <h1></h1>
+  </section>
+
+  <section class="mission-vision">
+    <h2 class="section-title">MISSION</h2>
+    <p>To empower the youth through education, leadership, and community engagement in Calamba City.</p>
+    <h2 class="section-title">VISION</h2>
+    <p>A future where every young person in Calamba becomes a proactive and informed leader of positive change.</p>
+  </section>
+
+  <section class="cards-container">
+    <div class="card">
+      <img src="images/jobs.jpg" alt="Jobs">
+      <h2>JOB OPPORTUNITIES & SEMINARS</h2>
+      <p class="teaser">Discover job openings & seminars perfect for career growth...</p>
+      <div class="hidden-content">
+        <p>The Job Opportunities section of Project K connects Calambeño youth and residents with the latest local job openings, internships, and seminars from government agencies, private companies, and partner organizations. It aims to support career growth, skill development, and economic participation by providing accessible employment information and guidance—all in one platform dedicated to empowering the future workforce of Calamba.</p>
+      </div>
+      <button onclick="expandCard(this)">See More</button>
+    </div>
+    <div class="card">
+      <img src="images/history.jpg" alt="History of Calamba">
+      <h2>LEGAL INFORMATIONS</h2>
+      <p class="teaser">Be knowledegeable about facts</p>
+      <div class="hidden-content">
+        <p>The Legal Information section of Project K provides access to essential laws, ordinances, and youth-related policies implemented in Calamba City. It serves as a centralized hub for understanding legal rights, community regulations, and government programs that directly impact the youth and local residents. This ensures transparency, promotes awareness, and empowers individuals to become informed and responsible citizens.</p>
+      </div>
+      <button onclick="expandCard(this)">See More</button>
+    </div>
+    <div class="card">
+      <img src="images/events.jpg" alt="Events">
+      <h2>TOURISM</h2>
+      <p class="teaser">See youth programs, summits, and public events...</p>
+      <div class="hidden-content">
+        <p>The Tourism section of Project K showcases the rich cultural heritage, natural wonders, and historical landmarks of Calamba City. From the iconic Rizal Shrine to scenic destinations like Mount Makiling and hot spring resorts, this section invites both locals and visitors to explore the beauty and identity of Calamba. It aims to promote pride in local heritage while boosting community engagement and tourism-driven development.</p>
+      </div>
+      <button onclick="expandCard(this)">See More</button>
+    </div>
+    <div class="card">
+      <img src="images/education.jpg" alt="Education">
+      <h2>EDUCATION</h2>
+      <p class="teaser">Support for scholars, workshops, and youth education plans...</p>
+      <div class="hidden-content">
+        <p>SThe Education section of Project K provides essential resources and information to help students, parents, and educators navigate academic opportunities in Calamba City. It highlights local schools, scholarship programs, skills training, and youth development initiatives aimed at supporting lifelong learning. This section empowers the youth to pursue their educational goals and fosters a culture of growth, knowledge, and excellence.</p>
+      </div>
+      <button onclick="expandCard(this)">See More</button>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2 class="section-title">EXPLORE THE BARANGAY'S WITH REGISTERED KASANDIGAN NG KABATAAN ORGANIZATIONS</h2>
+    <iframe src="https://www.google.com/maps/d/embed?mid=1Q61-RjI9-R64dJKWHnkSRlj6hC8qIAk" allowfullscreen></iframe>
+  </section>
+
+  <section class="project-intro fade-in" id="about" style="background: linear-gradient(to bottom, #f0f8ff, #e0ecff); padding: 4rem 2rem; text-align: center;">
+  <h2 class="section-title" style="font-size: 2.5rem; color: #1e3c72; margin-bottom: 1.5rem;">
+    <i class="bi bi-lightbulb-fill" style="color: #ffcc00;"></i> ABOUT PROJECT K
+  </h2>
+
+  <div style="max-width: 900px; margin: 0 auto; text-align: justify; font-size: 1.1rem; line-height: 1.8; color: #333;">
+    <p><strong>Project K: Kasandigan Hub – The Calambeños’ Guide</strong> is a meaningful initiative led by the youth of Calamba, designed to serve as a guide for citizens—especially the younger generation—on opportunities, events, and vital information about the city of Calamba.</p>
+
+    <p>Initially, its purpose was to assist older individuals in better navigating technology and digital services. However, as time passed, the project expanded and evolved with various innovative ideas to better address the needs of the community.</p>
+
+    <p>Among its key features are updates on job opportunities, student guides to schools and educational programs, and informative content on the history and notable destinations within Calamba. One of the project’s main highlights is the <strong>ID Generator</strong>, which allows members of <em>Kasandigan ng Kabataan</em> to obtain their official digital ID in a faster and more organized manner.</p>
+
+    <p><strong>Kasandigan ng Kabataan</strong> is a youth-led, non-governmental organization composed of young leaders from different barangays of Calamba. All their initiatives are volunteer-driven and without compensation, with a strong focus on raising awareness, compassion for others and the environment, and the promotion of peace and progress throughout the city.</p>
+
+    <p>Ultimately, <strong>Project K: Kasandigan Hub</strong> is a significant step toward a more informed, more organized, and more modern Calamba—led by the youth, for the youth, and for the entire Calambeño community.</p>
+
+    <div style="background-color: #fffbe6; border-left: 6px solid #ffcc00; padding: 1rem 1.5rem; margin-top: 2rem; border-radius: 10px;">
+      <p style="margin: 0;">
+        <i class="bi bi-exclamation-triangle-fill" style="color: #cc0000;"></i>
+        <strong>Disclaimer:</strong> This project is not intended to steal identity or organizational data, but rather to provide valuable information to the youth of Calamba—knowledge that can help them gradually grow and develop in their respective paths.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div>
+      <h4>ABOUT CALAMBA</h4>
+      <p onclick="location.href='register.php'">Tourism</p>
+    </div>
+    <div>
+      <h4>QUICK LINKS</h4>
+      <p onclick="location.href='register.php'">Barangay Tracker</p>
+      <p onclick="location.href='register.php'">Career Opportunities</p>
+      <p onclick="location.href='.php'">About Us</p>
+      <p onclick="location.href='register.php'">Calamba Map</p>
+    </div>
+    <div>
+      <h4>INFORMATION</h4>
+      <p><a href="tel:+639922262320" style="color: white; text-decoration: none;"><i class="fas fa-phone-alt"></i> +63 99-226-2320</a></p>
+      <p><a href="mailto:KK.pagasangbayan@gmail.com" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> KK.pagasangbayan@gmail.com</a></p>
+      <p><a href="mailto:projectkcal@gmail.com" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> projectkcal@gmail.com</a></p>
+      <h5>VOLUNTEERING HOURS</h5>
+      <p>Monday - Sunday</p>
+    </div>
+    <div>
+      <h4>MORE</h4>
+      <p><a href="https://www.facebook.com/profile.php?id=100094566836511" style="color: white; text-decoration: none;"><i class="fab fa-facebook"></i> FB Page</a></p>
+      <p>Mental Health Support: KasanggaBot</p>
+      <p>Created by IPT Project K -2025 Team</p>
+    </div>
+  </div>
+  <hr>
+  <p class="copyright">&copy; Project K 2025 – All Rights Reserved</p>
+</footer>
+
+
+<div id="signup-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('signup-modal').style.display='none'">&times;</span>
+    <h2>Sign Up for Project K</h2>
+    <form action="register.php" method="POST">
+      <input type="text" name="fullname" placeholder="Full Name" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+
+  <script>
+    function expandCard(button) {
+      const card = button.parentElement;
+      const content = card.querySelector('.hidden-content');
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        button.textContent = 'See More';
+      } else {
+        content.style.display = 'block';
+        button.textContent = 'See Less';
+      }
+      
+    }
+    
+  </script>
+</body>
+</html>
